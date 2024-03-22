@@ -1,21 +1,22 @@
-%Упорядочить список методом вставки.
+%РЈРїРѕСЂСЏРґРѕС‡РёС‚СЊ СЃРїРёСЃРѕРє РјРµС‚РѕРґРѕРј РІСЃС‚Р°РІРєРё.
 
-%Сортировка списка методом вставки
+%РЎРѕСЂС‚РёСЂРѕРІРєР° СЃРїРёСЃРєР° РјРµС‚РѕРґРѕРј РІСЃС‚Р°РІРєРё
 insertion_sort(List, SortedList) :-
     insertion_sort(List, [], SortedList).
 
-% Если список пуст, отсортированный список также пуст
+% Р•СЃР»Рё СЃРїРёСЃРѕРє РїСѓСЃС‚, РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ СЃРїРёСЃРѕРє С‚Р°РєР¶Рµ РїСѓСЃС‚
 insertion_sort([], SortedList, SortedList).
 
-% Вставляем голову списка в правильную позицию в отсортированном списке
+% Р’СЃС‚Р°РІР»СЏРµРј РіРѕР»РѕРІСѓ СЃРїРёСЃРєР° РІ РїСЂР°РІРёР»СЊРЅСѓСЋ РїРѕР·РёС†РёСЋ РІ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅРѕРј СЃРїРёСЃРєРµ
 insertion_sort([Head|Tail], PartiallySorted, SortedList) :-
     insert_sorted(Head, PartiallySorted, NewPartiallySorted),
     insertion_sort(Tail, NewPartiallySorted, SortedList).
 
-% Вставка элемента в отсортированный список
+% Р’СЃС‚Р°РІРєР° СЌР»РµРјРµРЅС‚Р° РІ РѕС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Р№ СЃРїРёСЃРѕРє
 insert_sorted(Element, [], [Element]).
 insert_sorted(Element, [Head|Tail], [Element, Head|Tail]) :-
     Element =< Head.
 insert_sorted(Element, [Head|Tail], [Head|NewTail]) :-
     Element > Head,
     insert_sorted(Element, Tail, NewTail).
+
